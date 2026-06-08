@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>السيرة الذاتية - عماد الدين المنصوب</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .cv-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            border-radius: 15px;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            margin: 0 auto 1rem;
+            object-fit: cover;
+        }
+
+        .cv-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .cv-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .cv-section {
+            background: white;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #3498db;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .contact-item i {
+            color: #3498db;
+            width: 20px;
+        }
+
+        .experience-item,
+        .education-item,
+        .skill-category {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border-right: 4px solid #3498db;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .experience-item h3,
+        .education-item h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-item .company,
+        .education-item .institution {
+            color: #666;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-item .date,
+        .education-item .date {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-bar {
+            background: #ecf0f1;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #3498db, #2980b9);
+            border-radius: 4px;
+            transition: width 2s ease;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-item {
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-right: 4px solid #e74c3c;
+        }
+
+        .project-item h4 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-tech {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .print-btn {
+            background: #e74c3c;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            transition: background 0.3s ease;
+        }
+
+        .print-btn:hover {
+            background: #c0392b;
+        }
+
+        @media print {
+            .back-btn,
+            .print-btn {
+                display: none;
+            }
+            
+            .cv-section {
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .cv-header h1 {
+                font-size: 2rem;
+            }
+            
+            .skills-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-btn">
+        <i class="fas fa-arrow-right"></i> العودة للموقع
+    </a>
+
+    <div class="container">
+        <button class="print-btn" onclick="window.print()">
+            <i class="fas fa-print"></i> طباعة السيرة الذاتية
+        </button>
+
+        <!-- Header -->
+        <div class="cv-header">
+            <img src="emad.png" alt="عماد الدين المنصوب" class="profile-img">
+            <h1>عماد الدين المنصوب</h1>
+            <p>خريج كلية الحاسبات - قسم تقنية المعلومات</p>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="cv-section">
+            <h2 class="section-title">
+                <i class="fas fa-address-card"></i>
+                معلومات التواصل
+            </h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>777617404</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>amadalmansoub5@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>اليمن</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-globe"></i>
+                    <span>emad-portfolio.com</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Professional Summary -->
+        <div class="cv-section">
+            <h2 class="section-title">
+                <i class="fas fa-user"></i>
+                الملف الشخصي
+            </h2>
+            <p>
+                أنا عماد الدين المنصوب، خريج كلية الحاسبات قسم تقنية المعلومات، أمتلك شغفاً كبيراً بعالم البرمجة وتطوير المواقع والتطبيقات. 
+                أسعى دائماً لتعلم التقنيات الحديثة ومواكبة التطورات في مجال تقنية المعلومات. أؤمن بأن التقنية هي المستقبل، وأهدف إلى أن أكون 
+                جزءاً من هذا المستقبل من خلال تطوير حلول تقنية مبتكرة تساهم في تحسين حياة الناس وتطوير المجتمع.
+            </p>
+        </div>
+
+        <!-- Education -->
+        <div class="cv-section">
+            <h2 class="section-title">
+                <i class="fas fa-graduation-cap"></i>
+                التعليم
+            </h2>
+            <div class="education-item">
+                <h3>بكالوريوس في تقنية المعلومات</h3>
+                <div class="institution">كلية الحاسبات</div>
+                <div class="date">2020 - 2024</div>
+                <p>تخرج بتقدير جيد جداً مع التركيز على البرمجة وتطوير الأنظمة</p>
+                <ul style="margin-top: 0.5rem; margin-right: 1rem;">
+                    <li>برمجة الحاسوب</li>
+                    <li>هندسة البرمجيات</li>
+                    <li>قواعد البيانات</li>
+                    <li>شبكات الحاسوب</li>
+                    <li>أمن المعلومات</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Skills -->
+        <div class="cv-section">
+            <h2 class="section-title">
+                <i class="fas fa-cogs"></i>
+                المهارات التقنية
+            </h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>لغات البرمجة</h3>
+                    <div class="skill-item">
+                        <span>HTML5 & CSS3</span>
+                        <span>90%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%"></div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <span>JavaScript</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%"></div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <span>PHP</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>أطر العمل والمكتبات</h3>
+                    <div class="skill-item">
+                        <span>Laravel</span>
+                        <span>75%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 75%"></div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <span>Bootstrap</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%"></div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <span>jQuery</span>
+                        <span>70%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 70%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>قواعد البيانات والأدوات</h3>
+                    <div class="skill-item">
+                        <span>MySQL</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%"></div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <span>Git & GitHub</span>
+                        <span>75%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 75%"></div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <span>Photoshop</span>
+                        <span>70%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 70%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects -->
+        <div class="cv-section">
+            <h2 class="section-title">
+                <i class="fas fa-project-diagram"></i>
+                المشاريع
+            </h2>
+            <div class="projects-grid">
+                <div class="project-item">
+                    <h4>موقع شخصي تفاعلي</h4>
+                    <div class="project-tech">HTML5, CSS3, JavaScript</div>
+                    <p>تطوير موقع شخصي متجاوب مع تصميم عصري وتفاعلي، يتضمن أقسام متعددة مثل المعلومات الشخصية، المهارات، المشاريع، ونموذج التواصل.</p>
+                    <ul style="margin-top: 0.5rem; margin-right: 1rem;">
+                        <li>تصميم متجاوب يعمل على جميع الأجهزة</li>
+                        <li>تأثيرات بصرية متقدمة</li>
+                        <li>نموذج تواصل تفاعلي</li>
+                    </ul>
+                </div>
+
+                <div class="project-item">
+                    <h4>نظام إدارة المحتوى</h4>
+                    <div class="project-tech">PHP, MySQL, HTML, CSS, JavaScript</div>
+                    <p>تطوير نظام إدارة محتوى شامل مع لوحة تحكم متقدمة لإدارة المقالات والمستخدمين.</p>
+                    <ul style="margin-top: 0.5rem; margin-right: 1rem;">
+                        <li>لوحة تحكم شاملة</li>
+                        <li>نظام إدارة المستخدمين</li>
+                        <li>محرر نصوص متقدم</li>
+                    </ul>
+                </div>
+
+                <div class="project-item">
+                    <h4>تطبيق ويب تفاعلي</h4>
+                    <div class="project-tech">Laravel, MySQL, Bootstrap</div>
+                    <p>تطوير تطبيق ويب متكامل باستخدام إطار Laravel مع واجهة مستخدم حديثة.</p>
+                    <ul style="margin-top: 0.5rem; margin-right: 1rem;">
+                        <li>هيكل MVC منظم</li>
+                        <li>نظام المصادقة والتفويض</li>
+                        <li>واجهة برمجة تطبيقات (API)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Certificates -->
+        <div class="cv-section">
+            <h2 class="section-title">
+                <i class="fas fa-certificate"></i>
+                الشهادات والدورات
+            </h2>
+            <div class="education-item">
+                <h3>شهادة تطوير المواقع الإلكترونية</h3>
+                <div class="institution">معهد التدريب التقني</div>
+                <div class="date">2023</div>
+                <p>دورة شاملة في تطوير المواقع باستخدام HTML, CSS, JavaScript وأطر العمل الحديثة</p>
+            </div>
+
+            <div class="education-item">
+                <h3>شهادة قواعد البيانات المتقدمة</h3>
+                <div class="institution">التعلم الذاتي</div>
+                <div class="date">2023</div>
+                <p>دورة متخصصة في تصميم وإدارة قواعد البيانات باستخدام MySQL وتحسين الأداء</p>
+            </div>
+
+            <div class="education-item">
+                <h3>شهادة Laravel Framework</h3>
+                <div class="institution">منصات التعلم الإلكتروني</div>
+                <div class="date">2024</div>
+                <p>دورة متقدمة في تطوير تطبيقات الويب باستخدام إطار Laravel وأفضل الممارسات</p>
+            </div>
+        </div>
+
+        <!-- Personal Skills -->
+        <div class="cv-section">
+            <h2 class="section-title">
+                <i class="fas fa-lightbulb"></i>
+                المهارات الشخصية
+            </h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <ul style="margin-right: 1rem;">
+                        <li><strong>العمل الجماعي:</strong> القدرة على العمل ضمن فريق والتعاون الفعال</li>
+                        <li><strong>حل المشكلات:</strong> مهارات تحليلية قوية لحل المشكلات التقنية</li>
+                        <li><strong>التعلم المستمر:</strong> شغف بتعلم التقنيات الجديدة ومواكبة التطورات</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <ul style="margin-right: 1rem;">
+                        <li><strong>إدارة الوقت:</strong> القدرة على إدارة المشاريع والمواعيد النهائية</li>
+                        <li><strong>التواصل:</strong> مهارات تواصل جيدة باللغتين العربية والإنجليزية</li>
+                        <li><strong>الإبداع:</strong> القدرة على التفكير الإبداعي وإيجاد حلول مبتكرة</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Career Objectives -->
+        <div class="cv-section">
+            <h2 class="section-title">
+                <i class="fas fa-bullseye"></i>
+                الأهداف المهنية
+            </h2>
+            <p>
+                أسعى لبناء مسيرة مهنية ناجحة في مجال تطوير البرمجيات وتقنية المعلومات، والمساهمة في تطوير حلول تقنية مبتكرة تخدم المجتمع. أهدف إلى:
+            </p>
+            <ul style="margin-top: 1rem; margin-right: 1rem;">
+                <li>العمل في شركة تقنية رائدة كمطور برمجيات</li>
+                <li>تطوير مهاراتي في تقنيات الذكاء الاصطناعي والتعلم الآلي</li>
+                <li>قيادة فريق تطوير في المستقبل</li>
+                <li>إنشاء شركة تقنية خاصة تقدم حلول مبتكرة</li>
+                <li>المساهمة في تطوير المجتمع التقني في اليمن</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+
